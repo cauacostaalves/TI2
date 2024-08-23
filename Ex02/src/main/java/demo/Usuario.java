@@ -1,4 +1,6 @@
-package exercicio02.demo;
+package demo;
+
+
 
 public class Usuario {
 	private int codigo;
