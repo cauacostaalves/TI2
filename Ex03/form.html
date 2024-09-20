@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estoque</title>
+    <script type="text/javascript">
+        function confirmarDeleteProduto(id, descricao, preco) {  
+            if (confirm('Confirmar a exclusão do produto [' + descricao + '] (ID ' + id + ') com preço R$ ' + preco)) {  
+                location.href = '/produto/delete/' + id;
+            }
+        }
+
+        function onLoad() {
+            if(document.getElementById("msg").value != "") {
+              alert(document.getElementById("msg").value);
+            }
+        }
+    </script>
+    <style>
+        /* Estilo geral */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #000;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .form--register table {
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #000;
+            color: #fff;
+        }
+
+        td {
+            font-size: 1rem;
+            color: #000;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        input[type="submit"] {
+            background-color: #000;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #333;
+        }
+
+        /* Botões de ação */
+        .action-buttons a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #000;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
+        .action-buttons a:hover {
+            background-color: #333;
+        }
+
+        .action-buttons .delete {
+            background-color: #555;
+        }
+
+        .action-buttons .delete:hover {
+            background-color: #444;
+        }
+
+        /* Para dispositivos móveis */
+        @media (max-width: 600px) {
+            input {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body onload="onLoad()">
+
+    <div class="container">
+        <h1>Controle de Estoque</h1>
+        <input type="hidden" id="msg" name="msg" value="">
+
+        <!-- Formulário de Inserção de Produto -->
+        <form class="form--register" action="/produto/insert" method="post" id="form-insert">
+            <table>
+                <tr>
+                    <th colspan="3">Inserir Novo Produto</th>
+                </tr>
+                <tr>
+                    <td>Descrição: <input class="input--register" type="text" name="descricao" placeholder="Digite a descrição"></td>
+                    <td>Preço: <input class="input--register" type="text" name="preco" placeholder="Digite o preço"></td>
+                    <td>Quantidade: <input class="input--register" type="text" name="quantidade" placeholder="Digite a quantidade"></td>
+                </tr>
+                <tr>
+                    <td>Data de fabricação: <input class="input--register" type="text" name="dataFabricacao" placeholder="YYYY-MM-DD HH:MM:SS"></td>
+                    <td>Data de validade: <input class="input--register" type="text" name="dataValidade" placeholder="YYYY-MM-DD"></td>
+                    <td><input type="submit" value="Inserir" class="input--main__style"></td>
+                </tr>
+            </table>
+        </form>
+
+        <!-- Lista de Produtos -->
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Detalhar</th>
+                <th>Atualizar</th>
+                <th>Excluir</th>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>
